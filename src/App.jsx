@@ -287,7 +287,7 @@ function App() {
           <div className="section-label">Acquisition Criteria</div>
           <h2 className="section-title">What We Look For<br />In a Business</h2>
           <div className="section-accent"></div>
-          <p className="section-lede">We acquire controlling stakes in profitable, cash-flow-generating businesses with durable competitive advantages.</p>
+          <p className="section-lede">We acquire controlling stakes in profitable small to mid-size businesses, that are cash-flow-generating and have durable competitive advantages.</p>
           <div className="acq-grid">
             <div className="acq-card">
               <h4>Revenue</h4>
