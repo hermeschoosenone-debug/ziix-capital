@@ -33,7 +33,6 @@ function App() {
         <video className="hero-video" autoPlay muted loop playsInline>
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
-        <div className="hero-bg-overlay"></div>
         <div className="hero-accent-line"></div>
         <div className="hero-pattern"></div>
         <div className="hero-content">
