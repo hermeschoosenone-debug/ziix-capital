@@ -78,7 +78,7 @@ function App() {
               <span className="hero-stat-label">TAO Price</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-value">2 TAO</span>
+              <span className="hero-stat-value">10 TAO</span>
               <span className="hero-stat-label">TAO Holdings</span>
             </div>
           </div>
