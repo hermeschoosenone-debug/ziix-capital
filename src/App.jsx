@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
   const [taoPrice, setTaoPrice] = useState('Loading...');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchPrice = async () => {
@@ -25,6 +26,7 @@ function App() {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -39,7 +41,16 @@ function App() {
               <span className="nav-sublabel">CAPITAL</span>
             </div>
           </div>
-          <div className="nav-links">
+          <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+            <button
+              className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+            >
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+            </button>
             <a href="#thesis" onClick={(e) => { e.preventDefault(); scrollTo('thesis'); }}>Thesis</a>
             <a href="#synthex" onClick={(e) => { e.preventDefault(); scrollTo('synthex'); }}>Synthex Forge</a>
             <a href="#acquisitions" onClick={(e) => { e.preventDefault(); scrollTo('acquisitions'); }}>Acquisitions</a>

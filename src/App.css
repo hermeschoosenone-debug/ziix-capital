@@ -97,15 +97,6 @@ a {
   font-style: italic;
 }
 
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-  }
-  .section-lede {
-    font-size: 1rem;
-  }
-}
-
 /* --- Decorative Burgundy Accent Line --- */
 .section-accent {
   width: 48px;
@@ -220,13 +211,66 @@ a {
   width: 100%;
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .nav-inner {
-    padding: 0 20px;
-  }
+/* --- Hamburger Menu Button --- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ziix-warm-off-white);
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.hamburger-line + .hamburger-line {
+  margin-top: 6px;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* Mobile nav overlay */
+.nav-links.mobile-open {
+  display: flex !important;
+  flex-direction: column;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  background: rgba(11, 18, 32, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 24px 32px;
+  gap: 20px;
+  border-bottom: 1px solid rgba(91, 15, 26, 0.2);
+  z-index: 999;
+}
+
+.nav-links.mobile-open a {
+  font-size: 0.85rem;
+  padding: 8px 0;
 }
 
 /* --- Hero Section --- */
@@ -474,29 +518,6 @@ a {
   color: var(--ziix-warm-off-white);
 }
 
-@media (max-width: 768px) {
-  .hero-headline {
-    font-size: 2.2rem;
-  }
-  .hero-subheadline {
-    font-size: 0.95rem;
-  }
-  .btn {
-    width: 100%;
-    text-align: center;
-  }
-  .hero-stats {
-    flex-direction: column;
-    gap: 24px;
-  }
-  .hero-stat-value {
-    font-size: 1.5rem;
-  }
-  .hero-content {
-    padding: 0 20px;
-  }
-}
-
 /* --- Capital Engines Section --- */
 .engines {
   padding: 120px 0;
@@ -565,12 +586,6 @@ a {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
-}
-
-@media (max-width: 900px) {
-  .engines-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* --- Capital Flywheel Section (DARK with burgundy accents) --- */
@@ -673,22 +688,6 @@ a {
   margin-left: 10px;
 }
 
-@media (max-width: 768px) {
-  .flywheel-step {
-    gap: 16px;
-  }
-  .flywheel-step-number {
-    font-size: 0.75rem;
-    width: 20px;
-  }
-  .flywheel-step-title {
-    font-size: 1.1rem;
-  }
-  .flywheel-step-desc {
-    font-size: 0.85rem;
-  }
-}
-
 /* --- Operating Principles (DARK with burgundy accents) --- */
 .principles {
   padding: 120px 0;
@@ -762,12 +761,6 @@ a {
   margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-  .principles-list li {
-    font-size: 1.05rem;
-  }
-}
-
 /* --- Thesis Section --- */
 .thesis {
   padding: 120px 0;
@@ -816,17 +809,6 @@ a {
   font-size: 0.9rem;
   line-height: 1.7;
   color: #5a5a5a;
-}
-
-@media (max-width: 768px) {
-  .thesis-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-  .thesis-lede {
-    font-size: 1.15rem;
-    padding-left: 16px;
-  }
 }
 
 /* --- Synthex Forge Section (DARK with burgundy accents) --- */
@@ -919,12 +901,6 @@ a {
   font-size: 0.85rem;
   line-height: 1.7;
   color: var(--ziix-platinum-grey);
-}
-
-@media (max-width: 768px) {
-  .synthex-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* --- Synthex Forge CTA Button --- */
@@ -1031,12 +1007,6 @@ a {
   color: #5a5a5a;
 }
 
-@media (max-width: 768px) {
-  .acq-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* --- Reports Section (DARK with burgundy accents) --- */
 .reports {
   padding: 120px 0;
@@ -1133,20 +1103,6 @@ a {
   padding: 3px 10px;
 }
 
-@media (max-width: 768px) {
-  .report-item {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .report-date {
-    min-width: auto;
-  }
-  .report-title {
-    width: 100%;
-    order: -1;
-  }
-}
-
 /* --- Contact Section --- */
 .contact {
   padding: 120px 0;
@@ -1234,4 +1190,378 @@ a {
   font-size: 0.7rem;
   color: rgba(201, 204, 209, 0.35);
   letter-spacing: 0.05em;
+}
+
+/* ============================================
+   MOBILE RESPONSIVENESS — Comprehensive Queries
+   ============================================ */
+
+/* --- Tablet: 769px – 1024px --- */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 2.25rem;
+  }
+  .hero-headline {
+    font-size: 3.25rem;
+  }
+  .hero-stats {
+    gap: 36px;
+  }
+  .engines-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .engine-card {
+    padding: 36px 28px;
+  }
+  .engine-card-full {
+    grid-column: 1 / -1;
+  }
+  .synthex-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .acq-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .section-inner {
+    padding: 0 28px;
+  }
+  .engines,
+  .flywheel,
+  .principles,
+  .thesis,
+  .synthex,
+  .acquisitions,
+  .reports,
+  .contact {
+    padding: 80px 0;
+  }
+}
+
+/* --- Mobile: 481px – 768px --- */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  .section-lede {
+    font-size: 1rem;
+  }
+  .section-inner {
+    padding: 0 20px;
+  }
+  .engines,
+  .flywheel,
+  .principles,
+  .thesis,
+  .synthex,
+  .acquisitions,
+  .reports,
+  .contact {
+    padding: 60px 0;
+  }
+
+  /* Hero */
+  .hero-headline {
+    font-size: 2.2rem;
+  }
+  .hero-subheadline {
+    font-size: 0.95rem;
+  }
+  .hero-content {
+    padding: 0 20px;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+  .hero-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 1.5rem;
+  }
+  .hero-stat {
+    width: calc(50% - 10px);
+  }
+  .hero-stat-value {
+    font-size: 1.5rem;
+  }
+  .hero-accent-line {
+    display: none;
+  }
+
+  /* Engines */
+  .engines-grid {
+    grid-template-columns: 1fr;
+  }
+  .engine-card {
+    padding: 32px 24px;
+  }
+  .engine-title {
+    font-size: 1.2rem;
+  }
+
+  /* Flywheel */
+  .flywheel-step {
+    gap: 16px;
+  }
+  .flywheel-step-number {
+    font-size: 0.75rem;
+    width: 20px;
+  }
+  .flywheel-step-title {
+    font-size: 1.1rem;
+  }
+  .flywheel-step-desc {
+    font-size: 0.85rem;
+  }
+  .flywheel-subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* Principles */
+  .principles-list li {
+    font-size: 1.05rem;
+  }
+
+  /* Thesis */
+  .thesis-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .thesis-lede {
+    font-size: 1.15rem;
+    padding-left: 16px;
+  }
+
+  /* Synthex */
+  .synthex-grid {
+    grid-template-columns: 1fr;
+  }
+  .synthex-card {
+    padding: 28px 24px;
+  }
+  .synthex-tagline {
+    font-size: 0.95rem;
+  }
+  .btn-view-white {
+    padding: 14px 32px;
+    font-size: 0.75rem;
+  }
+
+  /* Acquisitions */
+  .acq-grid {
+    grid-template-columns: 1fr;
+  }
+  .acq-card {
+    padding: 28px 24px;
+  }
+
+  /* Reports */
+  .report-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .report-date {
+    min-width: auto;
+  }
+  .report-title {
+    width: 100%;
+    order: -1;
+    font-size: 1rem;
+  }
+  .reports-subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* Contact */
+  .contact-email {
+    font-size: 1.1rem;
+    word-break: break-all;
+  }
+  .contact-text {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  /* Footer */
+  .footer-inner {
+    padding: 0 20px;
+  }
+  .footer {
+    padding: 40px 0;
+  }
+}
+
+/* --- Small Phone: ≤480px --- */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .section-lede {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  .section-inner {
+    padding: 0 16px;
+  }
+  .engines,
+  .flywheel,
+  .principles,
+  .thesis,
+  .synthex,
+  .acquisitions,
+  .reports,
+  .contact {
+    padding: 48px 0;
+  }
+
+  /* Hero */
+  .hero-headline {
+    font-size: 1.7rem;
+  }
+  .hero-subheadline {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-content {
+    padding: 0 16px;
+  }
+  .hero-badge {
+    font-size: 0.55rem;
+    padding: 4px 12px;
+  }
+  .hero-stats {
+    gap: 12px;
+  }
+  .hero-stat {
+    width: calc(50% - 6px);
+  }
+  .hero-stat-value {
+    font-size: 1.2rem;
+  }
+  .hero-stat-label {
+    font-size: 0.55rem;
+  }
+  .hero-scroll-indicator {
+    display: none;
+  }
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.7rem;
+  }
+
+  /* Engines */
+  .engine-card {
+    padding: 24px 20px;
+  }
+  .engine-title {
+    font-size: 1.1rem;
+  }
+  .engine-desc {
+    font-size: 0.85rem;
+  }
+
+  /* Flywheel */
+  .flywheel-step {
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .flywheel-step-title {
+    font-size: 1rem;
+  }
+  .flywheel-step-desc {
+    font-size: 0.8rem;
+  }
+
+  /* Principles */
+  .principles-list li {
+    font-size: 0.95rem;
+    padding: 14px 0;
+  }
+
+  /* Thesis */
+  .thesis-lede {
+    font-size: 1rem;
+    padding-left: 12px;
+    margin-bottom: 2rem;
+  }
+  .thesis-block h4 {
+    font-size: 1rem;
+  }
+  .thesis-block p {
+    font-size: 0.85rem;
+  }
+
+  /* Synthex */
+  .synthex-card {
+    padding: 24px 20px;
+  }
+  .synthex-card h4 {
+    font-size: 1rem;
+  }
+  .synthex-card p {
+    font-size: 0.8rem;
+  }
+  .synthex-tagline {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+  .synthex-cta {
+    margin-top: 2rem;
+  }
+  .btn-view-white {
+    padding: 12px 28px;
+    font-size: 0.7rem;
+  }
+
+  /* Acquisitions */
+  .acq-card {
+    padding: 24px 20px;
+  }
+  .acq-card h4 {
+    font-size: 0.7rem;
+  }
+  .acq-card p {
+    font-size: 0.85rem;
+  }
+
+  /* Reports */
+  .report-item {
+    padding: 18px 0;
+  }
+  .report-title {
+    font-size: 0.9rem;
+  }
+  .report-date {
+    font-size: 0.7rem;
+  }
+  .report-tag {
+    font-size: 0.55rem;
+  }
+
+  /* Contact */
+  .contact-email {
+    font-size: 0.95rem;
+  }
+  .contact-text {
+    font-size: 0.85rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 32px 0;
+  }
+  .footer-brand span {
+    font-size: 0.95rem;
+  }
+  .footer-tagline {
+    font-size: 0.6rem;
+  }
+  .footer-copy {
+    font-size: 0.6rem;
+  }
 }
