@@ -1,48 +1,75 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 function App() {
   const [taoPrice, setTaoPrice] = useState('Loading...');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const heroVideoRef = useRef(null);
+  const heroCanvasRef = useRef(null);
 
-  // Forward-then-reverse video loop
+  // Canvas-based forward-reverse video loop (reliable smooth playback)
   useEffect(() => {
     const video = heroVideoRef.current;
-    if (!video) return;
+    const canvas = heroCanvasRef.current;
+    if (!video || !canvas) return;
 
+    const ctx = canvas.getContext('2d');
     let animationId = null;
-    let reversing = false;
+    let direction = 1; // 1 = forward, -1 = reverse
+    const STEP = 0.03; // ~30fps equivalent
 
-    const playForward = () => {
-      reversing = false;
-      video.play().catch(() => {});
+    // Match canvas size to its container
+    const resizeCanvas = () => {
+      const parent = canvas.parentElement;
+      if (parent) {
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+      }
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const drawFrame = () => {
+      if (video.readyState < 2) {
+        animationId = requestAnimationFrame(drawFrame);
+        return;
+      }
+
+      // Draw current frame to canvas
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Step forward or backward
+      let nextTime = video.currentTime + direction * STEP;
+
+      // Check bounds and reverse direction
+      if (nextTime >= video.duration) {
+        nextTime = video.duration;
+        direction = -1;
+      } else if (nextTime <= 0) {
+        nextTime = 0;
+        direction = 1;
+      }
+
+      video.currentTime = nextTime;
+      animationId = requestAnimationFrame(drawFrame);
     };
 
-    const reverseToStart = () => {
-      reversing = true;
-      const step = () => {
-        if (!reversing) return;
-        video.currentTime = Math.max(0, video.currentTime - 0.03);
-        if (video.currentTime <= 0) {
-          reversing = false;
-          playForward();
-        } else {
-          animationId = requestAnimationFrame(step);
-        }
-      };
-      animationId = requestAnimationFrame(step);
+    // Ensure video metadata is loaded before starting
+    const onLoadedMetadata = () => {
+      video.currentTime = 0;
+      animationId = requestAnimationFrame(drawFrame);
     };
 
-    const onEnded = () => {
-      reverseToStart();
-    };
-
-    video.addEventListener('ended', onEnded);
-    playForward();
+    if (video.readyState >= 2) {
+      video.currentTime = 0;
+      animationId = requestAnimationFrame(drawFrame);
+    } else {
+      video.addEventListener('loadedmetadata', onLoadedMetadata);
+    }
 
     return () => {
       if (animationId) cancelAnimationFrame(animationId);
-      video.removeEventListener('ended', onEnded);
+      window.removeEventListener('resize', resizeCanvas);
+      video.removeEventListener('loadedmetadata', onLoadedMetadata);
     };
   }, []);
 
@@ -104,9 +131,10 @@ function App() {
 
       {/* Hero Section */}
       <section id="hero" className="hero">
-        <video ref={heroVideoRef} className="hero-video" autoPlay muted playsInline>
+        <video ref={heroVideoRef} className="hero-video" muted playsInline style={{ display: 'none' }}>
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
+        <canvas ref={heroCanvasRef} className="hero-video"></canvas>
         <div className="hero-accent-line"></div>
         <div className="hero-pattern"></div>
         <div className="hero-content">
