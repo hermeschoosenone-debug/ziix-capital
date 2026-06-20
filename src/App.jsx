@@ -291,7 +291,7 @@ function App() {
           <div className="acq-grid">
             <div className="acq-card">
               <h4>Revenue</h4>
-              <p>$5M–$50M annual revenue with demonstrated profitability and positive free cash flow.</p>
+              <p>€500k–€5M annual revenue with demonstrated profitability and positive free cash flow.</p>
             </div>
             <div className="acq-card">
               <h4>Moat</h4>
