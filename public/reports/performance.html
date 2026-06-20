@@ -4,36 +4,62 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Z·II·X Capital — Performance Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: #0A0A0F;
     color: #E8E8F0;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     padding: 20px;
+    background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(107,29,42,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(107,29,42,0.05) 0%, transparent 60%);
 }
-.container { max-width: 960px; width: 100%; }
 
-/* Header */
+.container { max-width: 1024px; width: 100%; }
+
+/* ── Animated Gradient Bar ── */
+.gradient-bar {
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #6B1D2A, #C9A84C, #6B1D2A, transparent);
+    background-size: 200% 100%;
+    animation: shimmer 4s ease-in-out infinite;
+    border-radius: 2px;
+    margin-bottom: 0;
+}
+@keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ── Header ── */
 .header {
     text-align: center;
-    padding: 30px 0 20px;
+    padding: 36px 0 20px;
+    position: relative;
 }
 .header h1 {
-    font-size: 28px;
-    font-weight: 200;
-    letter-spacing: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 8px;
     text-transform: uppercase;
     color: #fff;
     margin-bottom: 6px;
 }
 .header .subtitle {
-    font-size: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
     color: #6B1D2A;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     margin-bottom: 4px;
 }
@@ -41,25 +67,46 @@ body {
     font-size: 11px;
     color: #555;
     letter-spacing: 1px;
+    font-weight: 300;
 }
 
-/* Stats Grid */
+/* ── Stats Grid ── */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin: 20px 0;
+    gap: 14px;
+    margin: 24px 0;
 }
 .stat-card {
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 14px;
+    padding: 22px 18px;
     text-align: center;
-    transition: border-color 0.2s;
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+.stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: linear-gradient(135deg, rgba(107,29,42,0.08) 0%, transparent 50%);
+    pointer-events: none;
 }
 .stat-card:hover {
+    transform: scale(1.02);
     border-color: #6B1D2A;
+    box-shadow: 0 8px 32px rgba(107,29,42,0.15), 0 2px 8px rgba(0,0,0,0.3);
+}
+.stat-card:hover::before {
+    opacity: 1;
 }
 .stat-card .label {
     font-size: 10px;
@@ -67,80 +114,129 @@ body {
     letter-spacing: 2px;
     color: #777;
     margin-bottom: 8px;
+    font-weight: 500;
 }
 .stat-card .value {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 600;
     color: #fff;
+    font-variant-numeric: tabular-nums;
+    animation: fadeSlideUp 0.6s ease both;
 }
-.stat-card .value.positive { color: #4CAF50; }
-.stat-card .value.negative { color: #f44336; }
-.stat-card .value.gold { color: #FFD700; }
+.stat-card .value.positive { color: #C9A84C; }
+.stat-card .value.negative { color: #B84A4A; }
+.stat-card .value.gold { color: #C9A84C; }
 
-/* Win/Loss Tally Banner */
+.stat-card:nth-child(1) .value { animation-delay: 0.05s; }
+.stat-card:nth-child(2) .value { animation-delay: 0.10s; }
+.stat-card:nth-child(3) .value { animation-delay: 0.15s; }
+.stat-card:nth-child(4) .value { animation-delay: 0.20s; }
+.stat-card:nth-child(5) .value { animation-delay: 0.25s; }
+.stat-card:nth-child(6) .value { animation-delay: 0.30s; }
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Win/Loss Tally Banner ── */
 .winloss-banner {
     background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin: 0 0 16px;
+    border-radius: 14px;
+    padding: 22px 28px;
+    margin: 0 0 18px;
     text-align: center;
+    transition: all 0.3s ease;
+}
+.winloss-banner:hover {
+    border-color: rgba(107,29,42,0.4);
+    box-shadow: 0 4px 20px rgba(107,29,42,0.08);
 }
 .winloss-banner .tally {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 28px;
-    font-size: 22px;
-    font-weight: 600;
+    gap: 32px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ccc;
 }
-.winloss-banner .tally .wins { color: #4CAF50; }
-.winloss-banner .tally .losses { color: #f44336; }
-.winloss-banner .tally .be { color: #FFD700; }
-.winloss-banner .tally .sep { color: #555; font-weight: 300; }
+.winloss-banner .tally .wins { color: #C9A84C; }
+.winloss-banner .tally .losses { color: #B84A4A; }
+.winloss-banner .tally .be { color: #777; }
+.winloss-banner .tally .sep { color: #444; font-weight: 300; }
 .winloss-banner .wr-display {
-    margin-top: 10px;
-    font-size: 14px;
+    margin-top: 12px;
+    font-size: 13px;
     letter-spacing: 1px;
+    color: #999;
 }
 .winloss-banner .wr-display .wr-value {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
 }
 
-/* Section Header */
+/* ── Section Header ── */
 .section-header {
-    font-size: 13px;
-    font-weight: 500;
-    color: #999;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin: 24px 0 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #E8E8F0;
+    letter-spacing: 1px;
+    margin: 28px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(107,29,42,0.3);
+    position: relative;
+}
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: #6B1D2A;
+    border-radius: 1px;
 }
 
-/* Detail row */
+/* ── Gradient section divider ── */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(107,29,42,0.4), rgba(201,168,76,0.3), transparent);
+    margin: 10px 0;
+}
+
+/* ── Detail row ── */
 .detail-row {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 28px;
     font-size: 11px;
     color: #666;
     margin: 4px 0 20px;
     letter-spacing: 0.5px;
+    font-weight: 400;
 }
 .detail-row span { display: inline-flex; align-items: center; gap: 4px; }
-.detail-row .pos { color: #4CAF50; }
-.detail-row .neg { color: #f44336; }
+.detail-row .pos { color: #C9A84C; }
+.detail-row .neg { color: #B84A4A; }
 
-/* Table */
+/* ── Table ── */
 .table-wrap {
     background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
     margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+.table-wrap:hover {
+    border-color: rgba(107,29,42,0.25);
 }
 table {
     width: 100%;
@@ -149,55 +245,86 @@ table {
 }
 th {
     text-align: left;
-    padding: 12px 16px;
+    padding: 14px 18px;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #666;
+    color: #777;
     background: rgba(255,255,255,0.02);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(107,29,42,0.2);
+    font-weight: 600;
 }
 td {
-    padding: 10px 16px;
+    padding: 12px 18px;
     border-bottom: 1px solid rgba(255,255,255,0.03);
     color: #ccc;
+    font-variant-numeric: tabular-nums;
 }
 tr:last-child td { border-bottom: none; }
-td.up { color: #4CAF50; }
-td.down { color: #f44336; }
-td.positive { color: #4CAF50; }
-td.negative { color: #f44336; }
-td.gold { color: #FFD700; }
-td.rank-cell { color: #666; font-weight: 500; }
-td.strat-cell { color: #E8E8F0; font-weight: 500; }
 
-/* Footer */
+/* Alternating row colours */
+tbody tr:nth-child(even) {
+    background: rgba(255,255,255,0.015);
+}
+tbody tr:hover {
+    background: rgba(107,29,42,0.08);
+    transition: background 0.2s ease;
+}
+
+td.up { color: #C9A84C; }
+td.down { color: #B84A4A; }
+td.positive { color: #C9A84C; }
+td.negative { color: #B84A4A; }
+td.gold { color: #C9A84C; }
+td.rank-cell { color: #777; font-weight: 500; }
+td.strat-cell { color: #E8E8F0; font-weight: 500; }
+td.date-cell { color: #999; font-size: 11px; font-weight: 400; }
+
+.verdict-win { color: #C9A84C; font-weight: 500; }
+.verdict-loss { color: #B84A4A; font-weight: 500; }
+
+.empty-row {
+    text-align: center;
+    color: #555;
+    padding: 24px;
+    font-style: italic;
+}
+
+/* ── Footer ── */
 .footer {
     text-align: center;
-    padding: 20px;
+    padding: 28px 20px 16px;
     font-size: 10px;
     color: #444;
     letter-spacing: 1px;
+    border-top: 1px solid rgba(107,29,42,0.15);
+    margin-top: 10px;
 }
 .footer a { color: #6B1D2A; text-decoration: none; }
+.footer a:hover { color: #C9A84C; }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 600px) {
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .stat-card .value { font-size: 20px; }
-    .winloss-banner .tally { font-size: 18px; gap: 16px; flex-wrap: wrap; }
-    .winloss-banner .wr-display .wr-value { font-size: 26px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat-card .value { font-size: 22px; }
+    .winloss-banner .tally { font-size: 16px; gap: 14px; flex-wrap: wrap; }
+    .winloss-banner .wr-display .wr-value { font-size: 22px; }
+    .header h1 { font-size: 26px; letter-spacing: 5px; }
+    th, td { padding: 10px 12px; font-size: 11px; }
 }
 </style>
 </head>
 <body>
 <div class="container">
 
+  <!-- Animated Gradient Bar -->
+  <div class="gradient-bar"></div>
+
   <!-- Header -->
   <div class="header">
     <div class="subtitle">Proprietary Trading</div>
     <h1>Z·II·X Capital</h1>
-    <div class="timestamp">Updated June 20, 2026 at 21:44 UTC</div>
+    <div class="timestamp">Updated June 20, 2026 at 21:49 UTC</div>
   </div>
 
   <!-- Key Stats -->
@@ -231,14 +358,14 @@ td.strat-cell { color: #E8E8F0; font-weight: 500; }
   <!-- Prominent Win/Loss Tally -->
   <div class="winloss-banner">
     <div class="tally">
-      <span>✅ Wins: <span class="wins">54</span></span>
+      <span>Wins: <span class="wins">54</span></span>
       <span class="sep">|</span>
-      <span>❌ Losses: <span class="losses">26</span></span>
+      <span>Losses: <span class="losses">26</span></span>
       <span class="sep">|</span>
-      <span>⚖️ Breakeven: <span class="be">1</span></span>
+      <span>Breakeven: <span class="be">1</span></span>
     </div>
     <div class="wr-display">
-      <span>Win Rate: <span class="wr-value" style="color:#4CAF50">66.7%</span></span>
+      <span>Win Rate: <span class="wr-value" style="color:#C9A84C">66.7%</span></span>
     </div>
   </div>
 
@@ -252,7 +379,9 @@ td.strat-cell { color: #E8E8F0; font-weight: 500; }
     <span>Unrealized: <span class="neg">GBP -32.26</span></span>
   </div>
 
-  <!-- Open Positions Table (with Strategy column) -->
+  <div class="section-divider"></div>
+
+  <!-- Open Positions Table -->
   <div class="section-header">Open Positions</div>
   <div class="table-wrap">
     <table>
@@ -354,6 +483,106 @@ td.strat-cell { color: #E8E8F0; font-weight: 500; }
               <td class="gold">0.00</td>
               <td class="negative">GBP -26.05</td>
               <td>1</td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Last 10 Closed Trades -->
+  <div class="section-header">Recent Closed Trades</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Instrument</th>
+          <th>Direction</th>
+          <th>Strategy</th>
+          <th>P&amp;L</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+            <tr>
+              <td class="date-cell">Jun 18, 23:18</td>
+              <td>XAU/USD</td>
+              <td class="down">SHORT</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) XAU/USD D1</td>
+              <td class="positive">GBP +14.08</td>
+              <td class="verdict-loss">○ LOSS</td>
+            </tr>
+            <tr>
+              <td class="date-cell">Jun 18, 23:12</td>
+              <td>NAS100/USD</td>
+              <td class="up">LONG</td>
+              <td class="strat-cell">Opening Range Sweep NAS100 M15</td>
+              <td class="negative">GBP -6.65</td>
+              <td class="verdict-loss">○ LOSS</td>
+            </tr>
+            <tr>
+              <td class="date-cell">Jun 18, 23:12</td>
+              <td>XAU/USD</td>
+              <td class="down">SHORT</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) XAU/USD D1</td>
+              <td class="positive">GBP +61.19</td>
+              <td class="verdict-loss">○ LOSS</td>
+            </tr>
+            <tr>
+              <td class="date-cell">Jun 18, 23:12</td>
+              <td>GBP/USD</td>
+              <td class="down">SHORT</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) GBP/USD D1</td>
+              <td class="positive">GBP +262.02</td>
+              <td class="verdict-loss">○ LOSS</td>
+            </tr>
+            <tr>
+              <td class="date-cell">Jun 18, 23:12</td>
+              <td>EUR/USD</td>
+              <td class="down">SHORT</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) EUR/USD D1</td>
+              <td class="negative">GBP -26.05</td>
+              <td class="verdict-win">● WIN</td>
+            </tr>
+            <tr>
+              <td class="date-cell">Jun 18, 18:18</td>
+              <td>NAS100/USD</td>
+              <td class="up">LONG</td>
+              <td class="strat-cell">Opening Range Sweep NAS100 M15</td>
+              <td class="negative">GBP -764.58</td>
+              <td class="verdict-loss">○ LOSS</td>
+            </tr>
+            <tr>
+              <td class="date-cell">Jun 18, 18:04</td>
+              <td>XAU/USD</td>
+              <td class="down">SHORT</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) XAU/USD D1</td>
+              <td class="negative">GBP -37.10</td>
+              <td class="verdict-win">● WIN</td>
+            </tr>
+            <tr>
+              <td class="date-cell">Jun 18, 17:22</td>
+              <td>NAS100/USD</td>
+              <td class="up">LONG</td>
+              <td class="strat-cell">Opening Range Sweep NAS100 M15</td>
+              <td class="positive">GBP +2,451.50</td>
+              <td class="verdict-win">● WIN</td>
+            </tr>
+            <tr>
+              <td class="date-cell">Jun 18, 17:18</td>
+              <td>XAU/USD</td>
+              <td class="down">SHORT</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) XAU/USD D1</td>
+              <td class="positive">GBP +356.49</td>
+              <td class="verdict-loss">○ LOSS</td>
+            </tr>
+            <tr>
+              <td class="date-cell">Jun 18, 15:23</td>
+              <td>NAS100/USD</td>
+              <td class="up">LONG</td>
+              <td class="strat-cell">Opening Range Sweep NAS100 M15</td>
+              <td class="positive">GBP +3,090.00</td>
+              <td class="verdict-win">● WIN</td>
             </tr>
       </tbody>
     </table>
