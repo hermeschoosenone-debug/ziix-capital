@@ -850,10 +850,11 @@ a {
 .synthex-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop');
+  background-image: url('/hermes-architecture.webp');
   background-size: cover;
   background-position: center;
   opacity: 0.04;
+  filter: blur(4px);
   z-index: 0;
 }
 
