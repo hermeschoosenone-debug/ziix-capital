@@ -268,6 +268,16 @@ function App() {
               <p>Comprehensive attribution, performance reporting, and scenario analysis. Know exactly where your returns come from.</p>
             </div>
           </div>
+          <div className="synthex-cta">
+            <a
+              href="https://synthexforge.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-burgundy"
+            >
+              View Product
+            </a>
+          </div>
         </div>
       </section>
 

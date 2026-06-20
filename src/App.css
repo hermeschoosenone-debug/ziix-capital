@@ -926,6 +926,34 @@ a {
   }
 }
 
+/* --- Synthex Forge CTA Button --- */
+.synthex-cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.btn-burgundy {
+  display: inline-block;
+  background: var(--ziix-burgundy);
+  color: var(--ziix-warm-off-white);
+  border: 1px solid var(--ziix-burgundy);
+  padding: 16px 40px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-burgundy:hover {
+  background: transparent;
+  color: var(--ziix-burgundy);
+  border-color: var(--ziix-burgundy);
+}
+
 /* --- Acquisitions Section --- */
 .acquisitions {
   padding: 120px 0;
