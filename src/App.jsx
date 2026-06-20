@@ -1,6 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [taoPrice, setTaoPrice] = useState('Loading...');
+
+  useEffect(() => {
+    const fetchPrice = async () => {
+      try {
+        const res = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=TAOUSDT');
+        const data = await res.json();
+        const price = parseFloat(data.price);
+        if (!isNaN(price)) {
+          setTaoPrice('$' + price.toFixed(2));
+        }
+      } catch {
+        // keep last known price on error; if still loading, show "—"
+        setTaoPrice(prev => prev === 'Loading...' ? '—' : prev);
+      }
+    };
+
+    fetchPrice();
+    const interval = setInterval(fetchPrice, 30000);
+    return () => clearInterval(interval);
+  }, []);
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -53,7 +74,7 @@ function App() {
               <span className="hero-stat-label">System Uptime</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-value">Loading...</span>
+              <span className="hero-stat-value">{taoPrice}</span>
               <span className="hero-stat-label">TAO Price</span>
             </div>
             <div className="hero-stat">
