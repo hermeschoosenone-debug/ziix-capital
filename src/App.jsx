@@ -36,7 +36,7 @@ function App() {
         <div className="hero-content">
           <div className="hero-badge">Private Capital</div>
           <h1 className="hero-headline">A private capital machine<br />built to compound.</h1>
-          <p className="hero-subheadline">Systematic trading. Disciplined acquisitions. Operational value creation.</p>
+          <p className="hero-subheadline">Systematic trading. Strategic acquisitions. Digital asset treasury.</p>
           <div className="hero-ctas">
             <button className="btn btn-primary" onClick={() => scrollTo('thesis')}>Read the thesis</button>
             <button className="btn btn-outline" onClick={() => scrollTo('synthex')}>Explore Synthex Forge</button>
@@ -66,9 +66,9 @@ function App() {
       <section id="engines" className="engines">
         <div className="section-inner">
           <div className="section-label">Capital Engines</div>
-          <h2 className="section-title">Three Machines,<br />One Purpose</h2>
+          <h2 className="section-title">Three Machines + One Treasury,<br />One Purpose</h2>
           <div className="section-accent"></div>
-          <p className="section-lede">We operate at the intersection of systematic trading, disciplined acquisitions, and operational value creation — three engines that compound together.</p>
+          <p className="section-lede">We operate at the intersection of systematic trading, disciplined acquisitions, operational value creation, and digital asset treasury — compounding capital across traditional and decentralized markets.</p>
           <div className="engines-grid">
             <div className="engine-card">
               <div className="engine-number">01</div>
@@ -89,6 +89,13 @@ function App() {
               <h3 className="engine-title">Operational Value Creation</h3>
               <p className="engine-desc">
                 Post-acquisition, we deploy capital, talent, and systems to accelerate growth. Our holding company structure enables long-term thinking without quarterly earnings pressure.
+              </p>
+            </div>
+            <div className="engine-card">
+              <div className="engine-number">04</div>
+              <h3 className="engine-title">Digital Asset Treasury</h3>
+              <p className="engine-desc">
+                A portion of operating cash flows is deployed into Bittensor (TAO), a decentralised AI network asset. Holdings are staked at ~17.7% APY, compounding the treasury alongside our traditional portfolio.
               </p>
             </div>
           </div>
@@ -133,7 +140,7 @@ function App() {
             </div>
             <div className="thesis-block">
               <h4>Capital Allocation</h4>
-              <p>Free cash flow from operations funds both reinvestment in existing businesses and deployment into new opportunities. Every dollar has a job.</p>
+              <p>Free cash flow from operations funds reinvestment in existing businesses, deployment into new opportunities, and strategic accumulation of digital assets. Every dollar has a job.</p>
             </div>
             <div className="thesis-block">
               <h4>Long Horizons</h4>
@@ -230,6 +237,11 @@ function App() {
               <span className="report-date">Q2 2025</span>
               <span className="report-title">Synthex Forge: Architecture Overview</span>
               <span className="report-tag">Technical</span>
+            </div>
+            <div className="report-item">
+              <span className="report-date">Q1 2026</span>
+              <span className="report-title">Bittensor Treasury & Acquisition Strategy</span>
+              <span className="report-tag">Strategy</span>
             </div>
           </div>
         </div>
