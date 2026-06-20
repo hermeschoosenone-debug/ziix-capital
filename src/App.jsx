@@ -30,6 +30,9 @@ function App() {
 
       {/* Hero Section */}
       <section id="hero" className="hero">
+        <video className="hero-video" autoPlay muted loop playsInline>
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
         <div className="hero-bg-overlay"></div>
         <div className="hero-accent-line"></div>
         <div className="hero-pattern"></div>
@@ -102,6 +105,66 @@ function App() {
         </div>
       </section>
 
+      {/* Capital Flywheel Section */}
+      <section id="flywheel" className="flywheel">
+        <div className="flywheel-bg"></div>
+        <div className="section-inner">
+          <div className="section-label light">Capital Flywheel</div>
+          <h2 className="section-title light">The Z·II·X Capital Flywheel</h2>
+          <div className="section-accent"></div>
+          <p className="flywheel-subtitle">Six steps. Infinite compounding.</p>
+          <div className="flywheel-steps">
+            <div className="flywheel-step">
+              <div className="flywheel-step-number">1</div>
+              <div className="flywheel-step-content">
+                <h3 className="flywheel-step-title">Acquire Businesses</h3>
+                <p className="flywheel-step-desc">Build a portfolio of durable operating companies with repeatable cash flow</p>
+              </div>
+            </div>
+            <div className="flywheel-arrow">↓</div>
+            <div className="flywheel-step">
+              <div className="flywheel-step-number">2</div>
+              <div className="flywheel-step-content">
+                <h3 className="flywheel-step-title">Run Synthex Forge</h3>
+                <p className="flywheel-step-desc">Generate systematic trading profits through a Hermes Agent-powered, 24/7 multi-agent, multi-strategy engine</p>
+              </div>
+            </div>
+            <div className="flywheel-arrow">↓</div>
+            <div className="flywheel-step">
+              <div className="flywheel-step-number">3</div>
+              <div className="flywheel-step-content">
+                <h3 className="flywheel-step-title">Validate &amp; Manage Risk</h3>
+                <p className="flywheel-step-desc">Each strategy is statistically validated, correlation-diversified, and institutionally risk-managed</p>
+              </div>
+            </div>
+            <div className="flywheel-arrow">↓</div>
+            <div className="flywheel-step">
+              <div className="flywheel-step-number">4</div>
+              <div className="flywheel-step-content">
+                <h3 className="flywheel-step-title">Deploy Surplus Cash Flow</h3>
+                <p className="flywheel-step-desc">Operating profits and systematic trading profits fund TAO accumulation</p>
+              </div>
+            </div>
+            <div className="flywheel-arrow">↓</div>
+            <div className="flywheel-step">
+              <div className="flywheel-step-number">5</div>
+              <div className="flywheel-step-content">
+                <h3 className="flywheel-step-title">Stake TAO</h3>
+                <p className="flywheel-step-desc">Compound treasury assets through native staking and disciplined reserve management</p>
+              </div>
+            </div>
+            <div className="flywheel-arrow">↓</div>
+            <div className="flywheel-step">
+              <div className="flywheel-step-number">6</div>
+              <div className="flywheel-step-content">
+                <h3 className="flywheel-step-title">Reinvest Into Scale</h3>
+                <p className="flywheel-step-desc">More treasury strength, more acquisition capacity, more systems, more compounding</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Operating Principles Section */}
       <section id="principles" className="principles">
         <div className="principles-bg"></div>
@@ -110,12 +173,15 @@ function App() {
           <h2 className="section-title light">The Fortress Ethos</h2>
           <div className="section-accent"></div>
           <ul className="principles-list">
-            <li><span className="principle-bullet"></span>Compound patiently — think in decades, not quarters.</li>
-            <li><span className="principle-bullet"></span>Build systems that scale without the founder.</li>
-            <li><span className="principle-bullet"></span>Acquire businesses we would hold forever.</li>
-            <li><span className="principle-bullet"></span>Let data decide; let judgment override.</li>
-            <li><span className="principle-bullet"></span>Stay private. Stay disciplined. Stay focused.</li>
-            <li><span className="principle-bullet"></span>Fortress balance sheet. Machine operations.</li>
+            <li><span className="principle-bullet"></span>Think in decades, not quarters.</li>
+            <li><span className="principle-bullet"></span>Protect capital before pursuing growth.</li>
+            <li><span className="principle-bullet"></span>Acquire enduring businesses with long-term ownership potential</li>
+            <li><span className="principle-bullet"></span>Asymmetric accumulation of digital assets</li>
+            <li><span className="principle-bullet"></span>Build systems that scale and beyond</li>
+            <li><span className="principle-bullet"></span>Use data to inform decisions; use judgment to make them</li>
+            <li><span className="principle-bullet"></span>Improve operations with discipline, structure, and accountability</li>
+            <li><span className="principle-bullet"></span>Remain private, selective, and focused</li>
+            <li><span className="principle-bullet"></span>Fortress balance sheet. Machine-like execution</li>
           </ul>
         </div>
       </section>
@@ -256,7 +322,7 @@ function App() {
           <p className="contact-text">
             Z·II·X Capital does not accept outside capital. Inquiries regarding acquisition opportunities or institutional partnerships may be directed below.
           </p>
-          <a href="mailto:contact@ziixcapital.com" className="contact-email">contact@ziixcapital.com</a>
+          <a href="mailto:enquiries@ziixcapital.com" className="contact-email">enquiries@ziixcapital.com</a>
         </div>
       </section>
 

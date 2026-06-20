@@ -250,6 +250,21 @@ a {
   z-index: 0;
 }
 
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .hero-video {
+    display: none;
+  }
+}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -551,6 +566,126 @@ a {
   }
 }
 
+/* --- Capital Flywheel Section (DARK with burgundy accents) --- */
+.flywheel {
+  padding: 120px 0;
+  background: var(--ziix-deep-navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.flywheel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(91, 15, 26, 0.4), transparent);
+}
+
+.flywheel-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.04;
+  z-index: 0;
+}
+
+.flywheel .section-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.flywheel-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--ziix-platinum-grey);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.flywheel-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 800px;
+}
+
+.flywheel-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(91, 15, 26, 0.2);
+}
+
+.flywheel-step:last-of-type {
+  border-bottom: none;
+}
+
+.flywheel-step-number {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ziix-burgundy);
+  flex-shrink: 0;
+  margin-top: 2px;
+  width: 24px;
+  text-align: center;
+}
+
+.flywheel-step-content {
+  flex: 1;
+}
+
+.flywheel-step-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ziix-warm-off-white);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.flywheel-step-desc {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--ziix-platinum-grey);
+  opacity: 0.85;
+}
+
+.flywheel-arrow {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--ziix-burgundy);
+  padding: 4px 0;
+  line-height: 1;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .flywheel-step {
+    gap: 16px;
+  }
+  .flywheel-step-number {
+    font-size: 0.75rem;
+    width: 20px;
+  }
+  .flywheel-step-title {
+    font-size: 1.1rem;
+  }
+  .flywheel-step-desc {
+    font-size: 0.85rem;
+  }
+}
+
 /* --- Operating Principles (DARK with burgundy accents) --- */
 .principles {
   padding: 120px 0;
@@ -562,7 +697,7 @@ a {
 .principles-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop');
+  background-image: url('/fortress-bg.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.06;
