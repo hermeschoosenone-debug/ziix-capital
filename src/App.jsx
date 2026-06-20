@@ -323,7 +323,7 @@ function App() {
               <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
                 Bittensor Treasury &amp; Acquisition Strategy — Full Report
               </a>
-              <a href="/reports/ZIIX_Capital_Report_2026.pdf" download target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
                 View / Download
               </a>
             </div>
