@@ -273,9 +273,9 @@ function App() {
               href="https://synthexforge.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-burgundy"
+              className="btn btn-view-white"
             >
-              View Product
+              View
             </a>
           </div>
         </div>

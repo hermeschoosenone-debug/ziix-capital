@@ -954,6 +954,28 @@ a {
   border-color: var(--ziix-burgundy);
 }
 
+.btn-view-white {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--ziix-burgundy);
+  border: 1px solid var(--ziix-burgundy);
+  padding: 16px 40px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-view-white:hover {
+  background: var(--ziix-burgundy);
+  color: #ffffff;
+  border-color: var(--ziix-burgundy);
+}
+
 /* --- Acquisitions Section --- */
 .acquisitions {
   padding: 120px 0;
