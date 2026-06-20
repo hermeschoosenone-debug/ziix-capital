@@ -1,75 +1,68 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function App() {
   const [taoPrice, setTaoPrice] = useState('Loading...');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const heroVideoRef = useRef(null);
-  const heroCanvasRef = useRef(null);
 
-  // Canvas-based forward-reverse video loop (reliable smooth playback)
+  // Smooth forward-reverse video loop with timed easing
   useEffect(() => {
     const video = heroVideoRef.current;
-    const canvas = heroCanvasRef.current;
-    if (!video || !canvas) return;
+    if (!video) return;
 
-    const ctx = canvas.getContext('2d');
+    let reversing = false;
+    let reverseStartTime = 0;
+    let reverseStartPosition = 0;
+    const REVERSE_DURATION = 2500; // 2.5 seconds for smooth reverse
     let animationId = null;
-    let direction = 1; // 1 = forward, -1 = reverse
-    const STEP = 0.03; // ~30fps equivalent
 
-    // Match canvas size to its container
-    const resizeCanvas = () => {
-      const parent = canvas.parentElement;
-      if (parent) {
-        canvas.width = parent.clientWidth;
-        canvas.height = parent.clientHeight;
-      }
-    };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
 
-    const drawFrame = () => {
-      if (video.readyState < 2) {
-        animationId = requestAnimationFrame(drawFrame);
-        return;
-      }
+    const onEnded = () => {
+      reversing = true;
+      reverseStartTime = performance.now();
+      reverseStartPosition = video.duration;
+      video.pause(); // stop native playback
 
-      // Draw current frame to canvas
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const reverseFrame = (now) => {
+        if (!reversing) return;
+        const elapsed = now - reverseStartTime;
+        const progress = Math.min(elapsed / REVERSE_DURATION, 1);
+        const easedProgress = easeInOutCubic(progress);
+        video.currentTime = reverseStartPosition * (1 - easedProgress);
 
-      // Step forward or backward
-      let nextTime = video.currentTime + direction * STEP;
+        if (progress < 1) {
+          animationId = requestAnimationFrame(reverseFrame);
+        } else {
+          // Reached the start — play forward again
+          reversing = false;
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        }
+      };
 
-      // Check bounds and reverse direction
-      if (nextTime >= video.duration) {
-        nextTime = video.duration;
-        direction = -1;
-      } else if (nextTime <= 0) {
-        nextTime = 0;
-        direction = 1;
-      }
-
-      video.currentTime = nextTime;
-      animationId = requestAnimationFrame(drawFrame);
+      animationId = requestAnimationFrame(reverseFrame);
     };
 
-    // Ensure video metadata is loaded before starting
-    const onLoadedMetadata = () => {
-      video.currentTime = 0;
-      animationId = requestAnimationFrame(drawFrame);
+    video.addEventListener('ended', onEnded);
+
+    // Start playing once metadata is loaded
+    const startPlay = () => {
+      video.play().catch(() => {});
     };
 
     if (video.readyState >= 2) {
-      video.currentTime = 0;
-      animationId = requestAnimationFrame(drawFrame);
+      startPlay();
     } else {
-      video.addEventListener('loadedmetadata', onLoadedMetadata);
+      video.addEventListener('loadedmetadata', startPlay, { once: true });
     }
 
     return () => {
+      video.removeEventListener('ended', onEnded);
+      video.removeEventListener('loadedmetadata', startPlay);
       if (animationId) cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resizeCanvas);
-      video.removeEventListener('loadedmetadata', onLoadedMetadata);
     };
   }, []);
 
@@ -131,10 +124,9 @@ function App() {
 
       {/* Hero Section */}
       <section id="hero" className="hero">
-        <video ref={heroVideoRef} className="hero-video" muted playsInline style={{ display: 'none' }}>
+        <video ref={heroVideoRef} className="hero-video" muted playsInline autoPlay>
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
-        <canvas ref={heroCanvasRef} className="hero-video"></canvas>
         <div className="hero-accent-line"></div>
         <div className="hero-pattern"></div>
         <div className="hero-content">
