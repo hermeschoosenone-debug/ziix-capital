@@ -37,8 +37,8 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
-  color: var(--ziix-charcoal);
-  background-color: var(--ziix-warm-off-white);
+  color: var(--ziix-warm-off-white);
+  background-color: var(--ziix-deep-navy);
 }
 
 img {
@@ -64,7 +64,7 @@ a {
   font-weight: 600;
   font-size: 2.75rem;
   line-height: 1.15;
-  color: var(--ziix-deep-navy);
+  color: var(--ziix-warm-off-white);
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
 }
@@ -91,7 +91,7 @@ a {
   font-family: var(--font-serif);
   font-size: 1.2rem;
   line-height: 1.7;
-  color: #5a5a5a;
+  color: var(--ziix-platinum-grey);
   max-width: 680px;
   margin-bottom: 3rem;
   font-style: italic;
@@ -521,7 +521,7 @@ a {
 /* --- Capital Engines Section --- */
 .engines {
   padding: 120px 0;
-  background: var(--ziix-warm-off-white);
+  background: var(--ziix-deep-navy);
   position: relative;
 }
 
@@ -543,16 +543,16 @@ a {
 }
 
 .engine-card {
-  background: #fff;
-  border: 1px solid rgba(201, 204, 209, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(201, 204, 209, 0.08);
   border-top: 3px solid var(--ziix-burgundy);
   padding: 48px 36px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .engine-card:hover {
-  border-color: var(--ziix-burgundy);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  border-color: rgba(91, 15, 26, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   transform: translateY(-3px);
 }
 
@@ -569,7 +569,7 @@ a {
   font-family: var(--font-serif);
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--ziix-deep-navy);
+  color: var(--ziix-warm-off-white);
   margin-bottom: 0.75rem;
   line-height: 1.3;
 }
@@ -578,7 +578,7 @@ a {
   font-family: var(--font-sans);
   font-size: 0.9rem;
   line-height: 1.7;
-  color: #5a5a5a;
+  color: var(--ziix-platinum-grey);
 }
 
 .engine-card-full {
@@ -764,7 +764,7 @@ a {
 /* --- Thesis Section --- */
 .thesis {
   padding: 120px 0;
-  background: var(--ziix-warm-off-white);
+  background: var(--ziix-deep-navy);
   position: relative;
 }
 
@@ -782,7 +782,7 @@ a {
   font-family: var(--font-serif);
   font-size: 1.5rem;
   line-height: 1.6;
-  color: var(--ziix-deep-navy);
+  color: var(--ziix-warm-off-white);
   max-width: 700px;
   margin-bottom: 3.5rem;
   font-style: italic;
@@ -808,7 +808,7 @@ a {
   font-family: var(--font-sans);
   font-size: 0.9rem;
   line-height: 1.7;
-  color: #5a5a5a;
+  color: var(--ziix-platinum-grey);
 }
 
 /* --- Synthex Forge Section (DARK with burgundy accents) --- */
@@ -956,7 +956,7 @@ a {
 /* --- Acquisitions Section --- */
 .acquisitions {
   padding: 120px 0;
-  background: var(--ziix-warm-off-white);
+  background: var(--ziix-deep-navy);
   position: relative;
 }
 
@@ -977,16 +977,16 @@ a {
 }
 
 .acq-card {
-  background: #fff;
-  border: 1px solid rgba(201, 204, 209, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(201, 204, 209, 0.08);
   border-top: 3px solid var(--ziix-burgundy);
   padding: 40px 32px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .acq-card:hover {
-  border-color: var(--ziix-burgundy);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  border-color: rgba(91, 15, 26, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   transform: translateY(-3px);
 }
 
@@ -1004,7 +1004,7 @@ a {
   font-family: var(--font-sans);
   font-size: 0.9rem;
   line-height: 1.7;
-  color: #5a5a5a;
+  color: var(--ziix-platinum-grey);
 }
 
 /* --- Reports Section (DARK with burgundy accents) --- */
@@ -1106,7 +1106,7 @@ a {
 /* --- Contact Section --- */
 .contact {
   padding: 120px 0;
-  background: var(--ziix-warm-off-white);
+  background: var(--ziix-deep-navy);
   text-align: center;
 }
 
@@ -1114,7 +1114,7 @@ a {
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.7;
-  color: #5a5a5a;
+  color: var(--ziix-platinum-grey);
   max-width: 520px;
   margin: 0 auto 2.5rem;
 }
