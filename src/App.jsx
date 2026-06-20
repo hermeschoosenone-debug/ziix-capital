@@ -5,48 +5,18 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const heroVideoRef = useRef(null);
 
-  // Smooth forward-reverse video loop with timed easing
+  // Smooth video loop: seek to start just before the video ends
   useEffect(() => {
     const video = heroVideoRef.current;
     if (!video) return;
 
-    let reversing = false;
-    let reverseStartTime = 0;
-    let reverseStartPosition = 0;
-    const REVERSE_DURATION = 2500; // 2.5 seconds for smooth reverse
-    let animationId = null;
-
-    function easeInOutCubic(t) {
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-
-    const onEnded = () => {
-      reversing = true;
-      reverseStartTime = performance.now();
-      reverseStartPosition = video.duration;
-      video.pause(); // stop native playback
-
-      const reverseFrame = (now) => {
-        if (!reversing) return;
-        const elapsed = now - reverseStartTime;
-        const progress = Math.min(elapsed / REVERSE_DURATION, 1);
-        const easedProgress = easeInOutCubic(progress);
-        video.currentTime = reverseStartPosition * (1 - easedProgress);
-
-        if (progress < 1) {
-          animationId = requestAnimationFrame(reverseFrame);
-        } else {
-          // Reached the start — play forward again
-          reversing = false;
-          video.currentTime = 0;
-          video.play().catch(() => {});
-        }
-      };
-
-      animationId = requestAnimationFrame(reverseFrame);
+    const onTimeUpdate = () => {
+      if (video.currentTime >= video.duration - 0.3) {
+        video.currentTime = 0;
+      }
     };
 
-    video.addEventListener('ended', onEnded);
+    video.addEventListener('timeupdate', onTimeUpdate);
 
     // Start playing once metadata is loaded
     const startPlay = () => {
@@ -60,9 +30,8 @@ function App() {
     }
 
     return () => {
-      video.removeEventListener('ended', onEnded);
+      video.removeEventListener('timeupdate', onTimeUpdate);
       video.removeEventListener('loadedmetadata', startPlay);
-      if (animationId) cancelAnimationFrame(animationId);
     };
   }, []);
 
