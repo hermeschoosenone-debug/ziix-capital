@@ -15,7 +15,7 @@ function App() {
 
     const playForward = () => {
       reversing = false;
-      video.play();
+      video.play().catch(() => {});
     };
 
     const reverseToStart = () => {
