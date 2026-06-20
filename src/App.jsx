@@ -318,7 +318,15 @@ function App() {
           <div className="section-accent"></div>
           <p className="reports-subtitle">Strategy reports, acquisition memos, and market commentary.</p>
           <div className="reports-list">
-            {/* Daily performance report link removed */}
+            <div className="report-item">
+              <span className="report-date">Daily</span>
+              <a href="/reports/performance.html" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
+                Trading Performance Report
+              </a>
+              <a href="/reports/performance.html" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
+                View Report
+              </a>
+            </div>
             <div className="report-item">
               <span className="report-date">Q1 2026</span>
               <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>

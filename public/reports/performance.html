@@ -15,7 +15,7 @@ body {
     justify-content: center;
     padding: 20px;
 }
-.container { max-width: 900px; width: 100%; }
+.container { max-width: 960px; width: 100%; }
 
 /* Header */
 .header {
@@ -77,31 +77,36 @@ body {
 .stat-card .value.negative { color: #f44336; }
 .stat-card .value.gold { color: #FFD700; }
 
-/* Full-width cards */
-.stat-card.wide {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 24px;
+/* Win/Loss Tally Banner */
+.winloss-banner {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 0 0 16px;
+    text-align: center;
 }
-.stat-card.wide .section { text-align: left; }
-.stat-card.wide .section .label { margin-bottom: 2px; }
-.stat-card.wide .section .value { font-size: 16px; }
-
-/* Small detail */
-.detail-row {
+.winloss-banner .tally {
     display: flex;
     justify-content: center;
-    gap: 24px;
-    font-size: 11px;
-    color: #666;
-    margin: 4px 0 20px;
-    letter-spacing: 0.5px;
+    align-items: center;
+    gap: 28px;
+    font-size: 22px;
+    font-weight: 600;
 }
-.detail-row span { display: inline-flex; align-items: center; gap: 4px; }
-.detail-row .pos { color: #4CAF50; }
-.detail-row .neg { color: #f44336; }
+.winloss-banner .tally .wins { color: #4CAF50; }
+.winloss-banner .tally .losses { color: #f44336; }
+.winloss-banner .tally .be { color: #FFD700; }
+.winloss-banner .tally .sep { color: #555; font-weight: 300; }
+.winloss-banner .wr-display {
+    margin-top: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.winloss-banner .wr-display .wr-value {
+    font-size: 32px;
+    font-weight: 700;
+}
 
 /* Section Header */
 .section-header {
@@ -114,6 +119,20 @@ body {
     padding-bottom: 8px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
+
+/* Detail row */
+.detail-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    font-size: 11px;
+    color: #666;
+    margin: 4px 0 20px;
+    letter-spacing: 0.5px;
+}
+.detail-row span { display: inline-flex; align-items: center; gap: 4px; }
+.detail-row .pos { color: #4CAF50; }
+.detail-row .neg { color: #f44336; }
 
 /* Table */
 .table-wrap {
@@ -148,6 +167,9 @@ td.up { color: #4CAF50; }
 td.down { color: #f44336; }
 td.positive { color: #4CAF50; }
 td.negative { color: #f44336; }
+td.gold { color: #FFD700; }
+td.rank-cell { color: #666; font-weight: 500; }
+td.strat-cell { color: #E8E8F0; font-weight: 500; }
 
 /* Footer */
 .footer {
@@ -163,8 +185,8 @@ td.negative { color: #f44336; }
 @media (max-width: 600px) {
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .stat-card .value { font-size: 20px; }
-    .stat-card.wide { flex-wrap: wrap; gap: 8px; }
-    .stat-card.wide .section { flex: 1 1 45%; }
+    .winloss-banner .tally { font-size: 18px; gap: 16px; flex-wrap: wrap; }
+    .winloss-banner .wr-display .wr-value { font-size: 26px; }
 }
 </style>
 </head>
@@ -175,7 +197,7 @@ td.negative { color: #f44336; }
   <div class="header">
     <div class="subtitle">Proprietary Trading</div>
     <h1>Z·II·X Capital</h1>
-    <div class="timestamp">Updated June 20, 2026 at 21:35 UTC</div>
+    <div class="timestamp">Updated June 20, 2026 at 21:44 UTC</div>
   </div>
 
   <!-- Key Stats -->
@@ -206,13 +228,23 @@ td.negative { color: #f44336; }
     </div>
   </div>
 
+  <!-- Prominent Win/Loss Tally -->
+  <div class="winloss-banner">
+    <div class="tally">
+      <span>✅ Wins: <span class="wins">54</span></span>
+      <span class="sep">|</span>
+      <span>❌ Losses: <span class="losses">26</span></span>
+      <span class="sep">|</span>
+      <span>⚖️ Breakeven: <span class="be">1</span></span>
+    </div>
+    <div class="wr-display">
+      <span>Win Rate: <span class="wr-value" style="color:#4CAF50">66.7%</span></span>
+    </div>
+  </div>
+
   <!-- Detail row -->
   <div class="detail-row">
     <span>Balance: GBP 112,804.48</span>
-    <span>|</span>
-    <span>Wins: <span class="pos">54</span></span>
-    <span>Losses: <span class="neg">26</span></span>
-    <span>Breakeven: 1</span>
     <span>|</span>
     <span>Gross P: <span class="pos">GBP 43,604.01</span></span>
     <span>Gross L: <span class="neg">GBP 20,120.77</span></span>
@@ -220,7 +252,7 @@ td.negative { color: #f44336; }
     <span>Unrealized: <span class="neg">GBP -32.26</span></span>
   </div>
 
-  <!-- Open Positions Table -->
+  <!-- Open Positions Table (with Strategy column) -->
   <div class="section-header">Open Positions</div>
   <div class="table-wrap">
     <table>
@@ -232,6 +264,7 @@ td.negative { color: #f44336; }
           <th>Stop Loss</th>
           <th>Take Profit</th>
           <th>Unrealized</th>
+          <th>Strategy</th>
         </tr>
       </thead>
       <tbody>
@@ -243,6 +276,7 @@ td.negative { color: #f44336; }
               <td>1.34617</td>
               <td>1.30729</td>
               <td class="negative">GBP -8.39</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) GBP/USD D1</td>
             </tr>
             <tr>
               <td>EUR/USD</td>
@@ -251,6 +285,75 @@ td.negative { color: #f44336; }
               <td>1.15303</td>
               <td>1.12059</td>
               <td class="negative">GBP -23.87</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) EUR/USD D1</td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Top Strategies by Performance -->
+  <div class="section-header">Top Strategies — Live Performance</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Strategy</th>
+          <th>Win Rate</th>
+          <th>Profit Factor</th>
+          <th>P&amp;L</th>
+          <th>Trades</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+            <tr>
+              <td class="rank-cell">#1</td>
+              <td class="strat-cell">Opening Range Sweep SPX500 M15</td>
+              <td class="positive">100.0%</td>
+              <td class="gold">∞</td>
+              <td class="positive">GBP +4,986.00</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td class="rank-cell">#2</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) GBP/USD D1</td>
+              <td class="positive">100.0%</td>
+              <td class="gold">∞</td>
+              <td class="positive">GBP +262.02</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td class="rank-cell">#3</td>
+              <td class="strat-cell">Opening Range Sweep NAS100 M15</td>
+              <td class="positive">71.4%</td>
+              <td class="gold">15.44</td>
+              <td class="positive">GBP +11,133.44</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td class="rank-cell">#4</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) XAU/USD D1</td>
+              <td class="positive">60.0%</td>
+              <td class="gold">4.67</td>
+              <td class="positive">GBP +339.38</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td class="rank-cell">#5</td>
+              <td class="strat-cell">Unknown</td>
+              <td class="positive">66.2%</td>
+              <td class="gold">1.35</td>
+              <td class="positive">GBP +6,788.45</td>
+              <td>65</td>
+            </tr>
+            <tr>
+              <td class="rank-cell">#6</td>
+              <td class="strat-cell">ICC (Inducement-Correction-Continuation) EUR/USD D1</td>
+              <td class="positive">0.0%</td>
+              <td class="gold">0.00</td>
+              <td class="negative">GBP -26.05</td>
+              <td>1</td>
             </tr>
       </tbody>
     </table>
