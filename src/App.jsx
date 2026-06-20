@@ -1,8 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function App() {
   const [taoPrice, setTaoPrice] = useState('Loading...');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const heroVideoRef = useRef(null);
+
+  // Forward-then-reverse video loop
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    let animationId = null;
+    let reversing = false;
+
+    const playForward = () => {
+      reversing = false;
+      video.play();
+    };
+
+    const reverseToStart = () => {
+      reversing = true;
+      const step = () => {
+        if (!reversing) return;
+        video.currentTime = Math.max(0, video.currentTime - 0.03);
+        if (video.currentTime <= 0) {
+          reversing = false;
+          playForward();
+        } else {
+          animationId = requestAnimationFrame(step);
+        }
+      };
+      animationId = requestAnimationFrame(step);
+    };
+
+    const onEnded = () => {
+      reverseToStart();
+    };
+
+    video.addEventListener('ended', onEnded);
+    playForward();
+
+    return () => {
+      if (animationId) cancelAnimationFrame(animationId);
+      video.removeEventListener('ended', onEnded);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchPrice = async () => {
@@ -62,7 +104,7 @@ function App() {
 
       {/* Hero Section */}
       <section id="hero" className="hero">
-        <video className="hero-video" autoPlay muted loop playsInline>
+        <video ref={heroVideoRef} className="hero-video" autoPlay muted playsInline>
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
         <div className="hero-accent-line"></div>
