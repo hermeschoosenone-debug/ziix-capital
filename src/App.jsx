@@ -53,8 +53,12 @@ function App() {
               <span className="hero-stat-label">System Uptime</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-value">$0</span>
-              <span className="hero-stat-label">Outside Capital</span>
+              <span className="hero-stat-value">Loading...</span>
+              <span className="hero-stat-label">TAO Price</span>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-value">2 TAO</span>
+              <span className="hero-stat-label">TAO Holdings</span>
             </div>
           </div>
         </div>
@@ -93,7 +97,7 @@ function App() {
                 Post-acquisition, we deploy capital, talent, and systems to accelerate growth. Our holding company structure enables long-term thinking without quarterly earnings pressure.
               </p>
             </div>
-            <div className="engine-card">
+            <div className="engine-card engine-card-full">
               <div className="engine-number">04</div>
               <h3 className="engine-title">Digital Asset Treasury</h3>
               <p className="engine-desc">

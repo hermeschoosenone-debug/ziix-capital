@@ -560,6 +560,13 @@ a {
   color: #5a5a5a;
 }
 
+.engine-card-full {
+  grid-column: 1 / -1;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 @media (max-width: 900px) {
   .engines-grid {
     grid-template-columns: 1fr;
