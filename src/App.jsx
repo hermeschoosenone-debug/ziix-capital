@@ -285,28 +285,57 @@ function App() {
           <div className="reports-list">
             <div className="report-item">
               <span className="report-date">Q1 2026</span>
-              <span className="report-title">Market Structure &amp; Regime Change</span>
-              <span className="report-tag">Strategy</span>
-            </div>
-            <div className="report-item">
-              <span className="report-date">Q4 2025</span>
-              <span className="report-title">Acquisition Memo: Industrial Services Platform</span>
-              <span className="report-tag">Memo</span>
-            </div>
-            <div className="report-item">
-              <span className="report-date">Q3 2025</span>
-              <span className="report-title">Capital Allocation Framework v2.0</span>
-              <span className="report-tag">Strategy</span>
-            </div>
-            <div className="report-item">
-              <span className="report-date">Q2 2025</span>
-              <span className="report-title">Synthex Forge: Architecture Overview</span>
-              <span className="report-tag">Technical</span>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
+                Bittensor Treasury &amp; Acquisition Strategy — Full Report
+              </a>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
+                View / Download
+              </a>
             </div>
             <div className="report-item">
               <span className="report-date">Q1 2026</span>
-              <span className="report-title">Bittensor Treasury & Acquisition Strategy</span>
-              <span className="report-tag">Strategy</span>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
+                Market Structure &amp; Regime Change
+              </a>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
+                Strategy
+              </a>
+            </div>
+            <div className="report-item">
+              <span className="report-date">Q4 2025</span>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
+                Acquisition Memo: Industrial Services Platform
+              </a>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
+                Memo
+              </a>
+            </div>
+            <div className="report-item">
+              <span className="report-date">Q3 2025</span>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
+                Capital Allocation Framework v2.0
+              </a>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
+                Strategy
+              </a>
+            </div>
+            <div className="report-item">
+              <span className="report-date">Q2 2025</span>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
+                Synthex Forge: Architecture Overview
+              </a>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
+                Technical
+              </a>
+            </div>
+            <div className="report-item">
+              <span className="report-date">Q1 2026</span>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
+                Bittensor Treasury &amp; Acquisition Strategy
+              </a>
+              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
+                Strategy
+              </a>
             </div>
           </div>
         </div>
