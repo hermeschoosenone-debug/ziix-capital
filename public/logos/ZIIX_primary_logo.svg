@@ -1,0 +1,15 @@
+<svg width="2400" height="1600" viewBox="0 0 2400 1600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="2400" height="1600" fill="none"/>
+  <g transform="translate(940,170) scale(0.52)">
+    <g fill="#171A21">
+      <polygon points="532,924 532,612 646,541 646,823 700,924"/>
+      <polygon points="424,924 700,924 809,1034 424,1034"/>
+      <polygon points="868,924 868,612 754,541 754,823 700,924"/>
+      <polygon points="976,924 700,924 591,1034 976,1034"/>
+    </g>
+    <polygon points="654,924 654,692 700,644 746,692 746,924" fill="#5B0F1A"/>
+    <polygon points="695,924 695,726 700,721 705,726 705,924" fill="#F6F4F1"/>
+  </g>
+  <text x="1200" y="900" text-anchor="middle" fill="#171A21" font-family="Liberation Serif, 'Times New Roman', serif" font-size="134" letter-spacing="20">Z·II·X</text>
+  <text x="1200" y="1048" text-anchor="middle" fill="#171A21" font-family="Inter, Arial, sans-serif" font-size="50" letter-spacing="34">CAPITAL</text>
+</svg>
