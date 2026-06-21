@@ -457,6 +457,13 @@ a {
   margin-bottom: 2.5rem;
 }
 
+/* Hide play button on desktop — show only on mobile/small screens */
+@media (min-width: 769px) {
+  .hero-play-btn-wrapper {
+    display: none;
+  }
+}
+
 .hero-play-btn {
   display: inline-flex;
   align-items: center;
@@ -670,22 +677,27 @@ a {
 }
 
 .flywheel-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 900px;
 }
 
 .flywheel-step {
   display: flex;
   align-items: flex-start;
-  gap: 24px;
-  padding: 24px 0;
-  border-bottom: 1px solid rgba(91, 15, 26, 0.2);
+  gap: 20px;
+  padding: 28px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(201, 204, 209, 0.08);
+  border-top: 3px solid var(--ziix-burgundy);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
 
-.flywheel-step:last-of-type {
-  border-bottom: none;
+.flywheel-step:hover {
+  border-color: rgba(91, 15, 26, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
 }
 
 .flywheel-step-number {
@@ -1164,13 +1176,16 @@ a {
   font-family: var(--font-serif);
   font-size: 1.3rem;
   color: var(--ziix-burgundy);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.25s ease;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(91, 15, 26, 0.4);
+  transition: color 0.25s ease, text-decoration-color 0.25s ease;
   padding-bottom: 2px;
 }
 
 .contact-email:hover {
-  border-bottom-color: var(--ziix-burgundy);
+  color: #ffffff;
+  text-decoration-color: #ffffff;
 }
 
 /* --- Footer --- */
@@ -1231,6 +1246,33 @@ a {
   font-size: 0.7rem;
   color: rgba(201, 204, 209, 0.35);
   letter-spacing: 0.05em;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-legal-link {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  color: rgba(201, 204, 209, 0.3);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-link:hover {
+  color: var(--ziix-burgundy);
+}
+
+.footer-legal-divider {
+  font-size: 0.5rem;
+  color: rgba(201, 204, 209, 0.15);
 }
 
 /* ============================================
@@ -1388,8 +1430,13 @@ a {
   }
 
   /* Flywheel */
+  .flywheel-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
   .flywheel-step {
     gap: 16px;
+    padding: 24px 20px;
   }
   .flywheel-step-number {
     font-size: 0.75rem;

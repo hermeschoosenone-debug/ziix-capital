@@ -196,7 +196,7 @@ function App() {
               <span className="hero-stat-label">TAO Price</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-value">10</span>
+              <span className="hero-stat-value">10 TAO</span>
               <span className="hero-stat-label">TAO Holdings</span>
             </div>
           </div>
@@ -263,6 +263,7 @@ function App() {
                 <p className="flywheel-step-desc">Build a portfolio of durable operating companies with repeatable cash flow</p>
               </div>
             </div>
+            <div className="flywheel-arrow">↓</div>
             <div className="flywheel-step">
               <div className="flywheel-step-number">2</div>
               <div className="flywheel-step-content">
@@ -270,6 +271,7 @@ function App() {
                 <p className="flywheel-step-desc">Generate systematic trading profits through a Hermes Agent-powered, 24/7 multi-agent, multi-strategy engine</p>
               </div>
             </div>
+            <div className="flywheel-arrow">↓</div>
             <div className="flywheel-step">
               <div className="flywheel-step-number">3</div>
               <div className="flywheel-step-content">
@@ -277,6 +279,7 @@ function App() {
                 <p className="flywheel-step-desc">Each strategy is statistically validated, correlation-diversified, and institutionally risk-managed</p>
               </div>
             </div>
+            <div className="flywheel-arrow">↓</div>
             <div className="flywheel-step">
               <div className="flywheel-step-number">4</div>
               <div className="flywheel-step-content">
@@ -284,6 +287,7 @@ function App() {
                 <p className="flywheel-step-desc">Operating profits and systematic trading profits fund TAO accumulation</p>
               </div>
             </div>
+            <div className="flywheel-arrow">↓</div>
             <div className="flywheel-step">
               <div className="flywheel-step-number">5</div>
               <div className="flywheel-step-content">
@@ -291,6 +295,7 @@ function App() {
                 <p className="flywheel-step-desc">Compound treasury assets through native staking and disciplined reserve management</p>
               </div>
             </div>
+            <div className="flywheel-arrow">↓</div>
             <div className="flywheel-step">
               <div className="flywheel-step-number">6</div>
               <div className="flywheel-step-content">
@@ -388,7 +393,7 @@ function App() {
               rel="noopener noreferrer"
               className="btn btn-view-white"
             >
-              View Synthex Forge
+              View
             </a>
           </div>
         </div>
@@ -432,6 +437,15 @@ function App() {
           <p className="reports-subtitle">Strategy reports, acquisition memos, and market commentary.</p>
           <div className="reports-list">
             <div className="report-item">
+              <span className="report-date">Daily</span>
+              <a href="/reports/performance.html" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
+                Trading Performance Report
+              </a>
+              <a href="/reports/performance.html" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
+                View Report
+              </a>
+            </div>
+            <div className="report-item">
               <span className="report-date">Q1 2026</span>
               <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
                 Bittensor Treasury &amp; Acquisition Strategy — Full Report
@@ -467,13 +481,6 @@ function App() {
           <p className="footer-tagline">Built like a fortress. Run like a machine.</p>
           <div className="footer-divider"></div>
           <p className="footer-copy">&copy; {new Date().getFullYear()} Z·II·X Capital. All rights reserved.</p>
-          <div className="footer-legal">
-            <a href="#" className="footer-legal-link">Privacy Policy</a>
-            <span className="footer-legal-divider">|</span>
-            <a href="#" className="footer-legal-link">Terms of Service</a>
-            <span className="footer-legal-divider">|</span>
-            <a href="#" className="footer-legal-link">Risk Disclaimer</a>
-          </div>
         </div>
       </footer>
     </div>
