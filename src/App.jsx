@@ -18,20 +18,75 @@ function App() {
 
     video.addEventListener('timeupdate', onTimeUpdate);
 
-    // Start playing once metadata is loaded
-    const startPlay = () => {
-      video.play().catch(() => {});
+    // Robust autoplay for mobile (Brave iOS, Safari iOS, etc.)
+    const attemptPlay = () => {
+      video.muted = true;
+      const p = video.play();
+      if (p) {
+        p.catch(() => {
+          // play failed — will be handled by touch fallback
+        });
+      }
     };
 
+    // Try on loadeddata (first frame ready)
+    const onLoadedData = () => {
+      attemptPlay();
+    };
+
+    // Try on loadedmetadata
+    const onLoadedMeta = () => {
+      attemptPlay();
+    };
+
+    // Try on canplay
+    const onCanPlay = () => {
+      attemptPlay();
+    };
+
+    video.addEventListener('loadeddata', onLoadedData, { once: true });
+    video.addEventListener('loadedmetadata', onLoadedMeta, { once: true });
+    video.addEventListener('canplay', onCanPlay, { once: true });
+
+    // If already ready enough, try immediately
     if (video.readyState >= 2) {
-      startPlay();
-    } else {
-      video.addEventListener('loadedmetadata', startPlay, { once: true });
+      attemptPlay();
     }
+
+    // Touch-based fallback: create a transparent overlay that triggers play
+    // on the first user interaction, then removes itself
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+
+    const touchOverlay = document.createElement('div');
+    touchOverlay.style.cssText =
+      'position:absolute;inset:0;z-index:1;background:transparent;cursor:pointer;';
+    touchOverlay.setAttribute('aria-hidden', 'true');
+
+    const triggerPlay = () => {
+      video.muted = true;
+      video.play().catch(() => {});
+      touchOverlay.removeEventListener('touchstart', triggerPlay);
+      touchOverlay.removeEventListener('click', triggerPlay);
+      if (touchOverlay.parentNode) {
+        touchOverlay.parentNode.removeChild(touchOverlay);
+      }
+    };
+
+    touchOverlay.addEventListener('touchstart', triggerPlay, { once: true });
+    touchOverlay.addEventListener('click', triggerPlay, { once: true });
+    hero.appendChild(touchOverlay);
 
     return () => {
       video.removeEventListener('timeupdate', onTimeUpdate);
-      video.removeEventListener('loadedmetadata', startPlay);
+      video.removeEventListener('loadeddata', onLoadedData);
+      video.removeEventListener('loadedmetadata', onLoadedMeta);
+      video.removeEventListener('canplay', onCanPlay);
+      touchOverlay.removeEventListener('touchstart', triggerPlay);
+      touchOverlay.removeEventListener('click', triggerPlay);
+      if (touchOverlay.parentNode) {
+        touchOverlay.parentNode.removeChild(touchOverlay);
+      }
     };
   }, []);
 
@@ -93,7 +148,7 @@ function App() {
 
       {/* Hero Section */}
       <section id="hero" className="hero">
-        <video ref={heroVideoRef} className="hero-video" muted playsInline autoPlay>
+        <video ref={heroVideoRef} className="hero-video" muted playsInline autoPlay preload="auto" webkit-playsinline="true">
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
         <div className="hero-accent-line"></div>
