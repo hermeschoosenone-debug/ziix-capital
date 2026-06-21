@@ -161,6 +161,27 @@ function App() {
             <button className="btn btn-primary" onClick={() => scrollTo('thesis')}>Read the thesis</button>
             <button className="btn btn-outline" onClick={() => scrollTo('synthex')}>Explore Synthex Forge</button>
           </div>
+          <div className="hero-play-btn-wrapper">
+            <button
+              className="hero-play-btn"
+              onClick={() => {
+                const video = heroVideoRef.current;
+                if (!video) return;
+                if (video.paused) {
+                  video.muted = true;
+                  video.play().catch(() => {});
+                } else {
+                  video.pause();
+                }
+              }}
+              aria-label="Play hero video"
+            >
+              <svg className="hero-play-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <span className="hero-play-label">Play Video</span>
+            </button>
+          </div>
           <div className="hero-stats">
             <div className="hero-stat">
               <span className="hero-stat-value">7</span>
