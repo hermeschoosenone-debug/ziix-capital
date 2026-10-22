@@ -156,7 +156,7 @@ function App() {
         <div className="hero-content">
           <div className="hero-badge">Private Capital</div>
           <h1 className="hero-headline">A private capital machine<br />built to compound.</h1>
-          <p className="hero-subheadline">Systematic trading. Strategic acquisitions. Digital asset treasury.</p>
+          <p className="hero-subheadline">Strategic acquisitions. Digital asset treasury. Machine-native services.</p>
           <div className="hero-ctas">
             <button className="btn btn-primary" onClick={() => scrollTo('thesis')}>Read the thesis</button>
             <button className="btn btn-outline" onClick={() => scrollTo('synthex')}>Explore Synthex Forge</button>
@@ -184,12 +184,12 @@ function App() {
           </div>
           <div className="hero-stats">
             <div className="hero-stat">
-              <span className="hero-stat-value">7</span>
-              <span className="hero-stat-label">Active Strategies</span>
+              <span className="hero-stat-value">78</span>
+              <span className="hero-stat-label">Paid Services</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-value">99.7%</span>
-              <span className="hero-stat-label">System Uptime</span>
+              <span className="hero-stat-value">242</span>
+              <span className="hero-stat-label">Live API Routes</span>
             </div>
             <div className="hero-stat">
               <span className="hero-stat-value">{taoPrice}</span>
@@ -213,13 +213,13 @@ function App() {
           <div className="section-label">Capital Engines</div>
           <h2 className="section-title">Three Machines + One Treasury,<br />One Purpose</h2>
           <div className="section-accent"></div>
-          <p className="section-lede">We operate at the intersection of systematic trading, disciplined acquisitions, operational value creation, and digital asset treasury — compounding capital across traditional and decentralized markets.</p>
+          <p className="section-lede">We operate at the intersection of disciplined acquisitions, operational value creation, digital asset treasury, and machine-native services — compounding capital across traditional and decentralized markets.</p>
           <div className="engines-grid">
             <div className="engine-card">
               <div className="engine-number">01</div>
-              <h3 className="engine-title">Algorithmic Trading</h3>
+              <h3 className="engine-title">Machine-Native Services</h3>
               <p className="engine-desc">
-                Proprietary systematic strategies across global markets. Our trading OS, Synthex Forge, executes with machine precision — capturing alpha through statistical arbitrage, momentum, and mean-reversion models.
+                Synthex Forge builds machine-native services that AI agents discover, pay for, and consume programmatically via x402 — settling USDC on Base mainnet.
               </p>
             </div>
             <div className="engine-card">
@@ -266,22 +266,22 @@ function App() {
             <div className="flywheel-step">
               <div className="flywheel-step-number">2</div>
               <div className="flywheel-step-content">
-                <h3 className="flywheel-step-title">Run Synthex Forge</h3>
-                <p className="flywheel-step-desc">Generate systematic trading profits through a Hermes Agent-powered, 24/7 multi-agent, multi-strategy engine</p>
+                <h3 className="flywheel-step-title">Ship Machine-Native Services</h3>
+                <p className="flywheel-step-desc">Synthex Forge ships agent-callable services that autonomous software discovers, verifies and pays for per call</p>
               </div>
             </div>
             <div className="flywheel-step">
               <div className="flywheel-step-number">3</div>
               <div className="flywheel-step-content">
                 <h3 className="flywheel-step-title">Validate &amp; Manage Risk</h3>
-                <p className="flywheel-step-desc">Each strategy is statistically validated, correlation-diversified, and institutionally risk-managed</p>
+                <p className="flywheel-step-desc">Every service is independently graded, verified on-chain, and priced per call</p>
               </div>
             </div>
             <div className="flywheel-step">
               <div className="flywheel-step-number">4</div>
               <div className="flywheel-step-content">
                 <h3 className="flywheel-step-title">Deploy Surplus Cash Flow</h3>
-                <p className="flywheel-step-desc">Operating profits and systematic trading profits fund TAO accumulation</p>
+                <p className="flywheel-step-desc">Operating profits and service revenue fund TAO accumulation</p>
               </div>
             </div>
             <div className="flywheel-step">
@@ -330,12 +330,12 @@ function App() {
           <h2 className="section-title">How We Think<br />About Capital</h2>
           <div className="section-accent"></div>
           <p className="thesis-lede">
-            "We believe the greatest compounding machines are built at the intersection of systematic trading and disciplined acquisitions."
+            "We believe the greatest compounding machines are built at the intersection of disciplined acquisitions and machine-native services."
           </p>
           <div className="thesis-grid">
             <div className="thesis-block">
-              <h4>Systematic Edge</h4>
-              <p>Markets are inefficient in predictable ways. Our proprietary models exploit these inefficiencies with rigor and repeatability — removing emotion from every trade.</p>
+              <h4>Service Edge</h4>
+              <p>Autonomous agents need capabilities nobody has built yet. We ship them as verifiable services — each one independently graded, settled on-chain, and priced per call.</p>
             </div>
             <div className="thesis-block">
               <h4>Acquisition Discipline</h4>
@@ -361,24 +361,24 @@ function App() {
             <span className="synthex-badge">Product</span>
             <h2 className="section-title light">Synthex Forge</h2>
             <div className="section-accent"></div>
-            <p className="synthex-tagline">The trading operating system powering our capital machine.</p>
+            <p className="synthex-tagline">The machine-native service layer of the agent economy.</p>
           </div>
           <div className="synthex-grid">
             <div className="synthex-card">
-              <h4>Multi-Asset Execution</h4>
-              <p>Equities, futures, FX, and fixed income — all routed through a unified execution layer with sub-millisecond latency.</p>
+              <h4>Agent-Native Discovery</h4>
+              <p>Services are published where autonomous agents look for them — a live catalogue, an OpenAPI surface, and a remote MCP endpoint.</p>
             </div>
             <div className="synthex-card">
-              <h4>Strategy Studio</h4>
-              <p>Design, backtest, and deploy strategies in a Python-native environment. From simple moving average crossovers to complex ML ensembles.</p>
+              <h4>x402 Payments</h4>
+              <p>Agents pay per call in USDC on Base mainnet. No signup, no invoice, no human in the loop — the HTTP 402 handshake settles it.</p>
             </div>
             <div className="synthex-card">
-              <h4>Risk Framework</h4>
-              <p>Real-time position sizing, VaR limits, and drawdown controls. The system enforces discipline so you don't have to.</p>
+              <h4>Verified On-Chain</h4>
+              <p>Every paid call settles on Base and can be cited as proof. Responses carry signatures that verify offline.</p>
             </div>
             <div className="synthex-card">
-              <h4>Portfolio Analytics</h4>
-              <p>Comprehensive attribution, performance reporting, and scenario analysis. Know exactly where your returns come from.</p>
+              <h4>MCP Tooling</h4>
+              <p>Every paid route ships a matching MCP tool, so any agent runtime can call the service directly with no integration work.</p>
             </div>
           </div>
           <div className="synthex-cta">
@@ -429,7 +429,7 @@ function App() {
           <div className="section-label light">Reports &amp; Memos</div>
           <h2 className="section-title light">Research &amp; Analysis</h2>
           <div className="section-accent"></div>
-          <p className="reports-subtitle">Strategy reports, acquisition memos, and market commentary.</p>
+          <p className="reports-subtitle">Acquisition memos, service documentation, and company updates.</p>
           <div className="reports-list">
             <div className="report-item">
               <span className="report-date">Q1 2026</span>
