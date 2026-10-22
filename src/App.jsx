@@ -432,13 +432,11 @@ function App() {
           <p className="reports-subtitle">Acquisition memos, service documentation, and company updates.</p>
           <div className="reports-list">
             <div className="report-item">
-              <span className="report-date">Q1 2026</span>
-              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-title" style={{ textDecoration: 'none', display: 'block' }}>
-                Bittensor Treasury &amp; Acquisition Strategy — Full Report
-              </a>
-              <a href="/reports/ZIIX_Capital_Report_2026.pdf" target="_blank" rel="noopener noreferrer" className="report-tag" style={{ textDecoration: 'none' }}>
-                View / Download
-              </a>
+              <span className="report-date">Next edition</span>
+              <span className="report-title" style={{ display: 'block' }}>
+                Updated report — Coming soon
+              </span>
+              <span className="report-tag">Coming soon</span>
             </div>
           </div>
         </div>
