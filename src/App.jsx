@@ -240,7 +240,7 @@ function App() {
               <div className="engine-number">04</div>
               <h3 className="engine-title">Digital Asset Treasury</h3>
               <p className="engine-desc">
-                A portion of operating cash flows is deployed into Bittensor (TAO), a decentralised AI network asset. Holdings are staked at ~17.7% APY, compounding the treasury alongside our traditional portfolio.
+                A portion of operating cash flows is deployed into Bittensor (TAO), a decentralised AI network asset. Holdings are staked at ~5.1% APY (as of October 2026), compounding the treasury alongside our traditional portfolio.
               </p>
             </div>
           </div>
